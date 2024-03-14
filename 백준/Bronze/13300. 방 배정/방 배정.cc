@@ -17,6 +17,11 @@ int main() {
 		cin >> S >> Y;
 		arr[S][Y-1]++;
 	}
+	/*
+	1 2 1 0 1 1 / 1 1 1 0 1 1
+	2 1 3 1 2 1 / 1 1 0 0 0 0
+	*/
+
 	int ans = 0;
 	for (int i = 0; i < 2; i++) {
 		for (int j = 0; j < 6; j++) {
@@ -27,7 +32,7 @@ int main() {
 			else
 			{
 				ans += arr[i][j] / K;
-				if (arr[i][j] / K != 0) ans++;
+				if (arr[i][j] % K != 0) ans++;
 			}
 		}
 	}
