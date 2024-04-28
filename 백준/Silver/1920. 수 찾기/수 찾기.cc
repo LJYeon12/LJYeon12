@@ -1,36 +1,44 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
 
-int a[100001];
-int marr[100001];
+int a[100005];
+int n;
 
-int binarysearch(int arr[], int size, int target) {
-	int left = 0;
-	int right = size - 1;
-	int mid = 0;
-	while (left <= right) {
-		mid = (left + right) / 2;
-		if (target < arr[mid]) right = mid - 1;
-		else if (target > arr[mid]) left = mid + 1;
-		else return 1;
+int binarysearch(int target) {
+	int st = 0;
+	int en = n - 1;
+
+	while (st <= en) {
+		int mid = (st + en) / 2;
+		if (a[mid] < target) {
+			st = mid + 1;
+		}
+		else if (a[mid] > target) {
+			en = mid - 1;
+		}
+		else { // mid == target
+			return 1;
+		}
 	}
 	return 0;
 }
+
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
-	int n,m,num;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
 	cin >> n;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-	}
+	for (int i = 0; i < n; i++) cin >> a[i];
 	sort(a, a + n);
+
+	int m;
 	cin >> m;
-	for (int i = 0; i < m; i++) {
-		cin >> num;
-		cout <<binarysearch(a, n, num)<<"\n";
+	while (m--){
+		int t;
+		cin >> t;
+		cout << binarysearch(t) << '\n';
 	}
+
 	return 0;
 }
