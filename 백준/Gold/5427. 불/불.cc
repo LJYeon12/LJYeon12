@@ -12,8 +12,8 @@ void solve_f(int w, int h) {
 	queue <pair<int, int>> q1;
 	queue <pair<int, int>> q2;
 	// 불&&human 초기화
-	memset(fire, -1, sizeof(fire));
-	memset(human, -1, sizeof(human));
+	//memset(fire, -1, sizeof(fire));
+	//memset(human, -1, sizeof(human));
 	for (int y = 0; y < h; y++) {
 		for (int x = 0; x < w; x++) {
 			cin >> building[y][x];
@@ -21,10 +21,12 @@ void solve_f(int w, int h) {
 				q1.push({ y, x });
 				fire[y][x] = 0;
 			}
+			else fire[y][x] = -1;
 			if (building[y][x] == '@') {
 				q2.push({ y, x });
 				human[y][x] = 0;
 			}
+			else human[y][x] = -1;
 		}
 	}
 	// 불 값구하기
@@ -65,7 +67,6 @@ void solve_f(int w, int h) {
 			q2.push({ ny, nx });
 		}
 	}
-
 	cout << "IMPOSSIBLE" << "\n";
 	return;
 }
