@@ -1,0 +1,2 @@
+-- 입양간 기록은 있는데, 보호소에 들어온 기록은 없는 동물의 ID, 이름
+SELECT animal_outs.animal_id, animal_outs.name from animal_outs left join animal_ins on animal_outs.animal_id = animal_ins.animal_id where animal_ins.animal_id is null;
